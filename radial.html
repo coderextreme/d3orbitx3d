@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<title>X3D Orbit</title>
+<link rel='stylesheet' type='text/css' href='http://www.x3dom.org/x3dom/release/x3dom.css'></link>
+<style>
+  #viz, svg {
+    width: 100%;
+    height: 100%;
+  }
+  text {
+    pointer-events: none;
+  }
+  #buttons {
+    position: fixed;
+    top:0;
+    left:0;
+  }
+  circle.ring {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+    stroke-opacity: .15;
+  }
+
+</style>
+<script type='text/javascript' src='http://www.x3dom.org/x3dom/release/x3dom-full.js'></script>
+<script language='Javascript' src='http://code.jquery.com/jquery-1.11.1.js'></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="d3.layout.orbit.js" charset="utf-8" type="text/javascript"></script>
+<script src="draworbit.js" charset="utf-8" type="text/javascript"></script>
+<script src="jsonradial.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<!--div id="viz"><svg width="1000" height="1000"></svg><div id="buttons"></div></div-->
+<div id="viz"><svg width="1000" height="1000"></svg><div id="buttons"></div></div>
+</body>
+<script type='text/javascript'>
+  $.getJSON("flipper.json", function(json) {
+	var radialinfo = jsonradial(json, 'x3d');
+	console.log(radialinfo);
+	drawOrbit(radialinfo);
+  });
+</script>
+</html>
